@@ -35,7 +35,7 @@ pub fn derive(input: TokenStream) -> TokenStream {
         omits.push(clause.1.clone());
     }
 
-    // Provide an escape hatch for cases where it is not possible to apply an heuristic.
+    // Provide an escape hatch for cases where it is not possible to apply an heuristic (test case 8).
     // This hatch should be a macro atribute like: `#[debug(bound = "T::Value: Debug")]`
     let mut attrs = ast.attrs;
     let mut escape_hatch = (false, quote! {});
