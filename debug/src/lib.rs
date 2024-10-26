@@ -23,12 +23,12 @@ pub fn derive(input: TokenStream) -> TokenStream {
     };
 
     // Heuristic 1:
-    // Generics in PhantomData are omited (test case 4);
+    // Generics in PhantomData are omited (test case 5);
     // So find them to filter out.
     let mut omits = identify_phantom_data_generics(&fields);
 
     // Heuristic 2:
-    // Try to force associated types of traits to implement debug via where clauses.
+    // Try to force associated types of traits to implement debug via where clauses (test case 7).
     let where_clauses = build_where_clause_for_associated_types(&ast.generics, fields);
     // Since they appear in the where clause, corresponding generic idents must be ommited as well from where clauses.
     for clause in &where_clauses {
